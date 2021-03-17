@@ -34,12 +34,14 @@ class Board{
         }
     }
     addListeners(){
-        this.htmlBoard.childNodes.forEach(div => div.addEventListener("click", (event) => {
+        let squares = this.htmlBoard.querySelectorAll(".square")
+        squares.forEach(div => div.addEventListener("click", (event) => {
             this.setSquare(div.id);
             event.preventDefault();
         }))
     }
     clearBoard(){
+        this.htmlBoard.querySelector(".reset-button").textContent = "Reset";
         for (let key in this.board){
             this.board[key][0] = false;
             this.board[key][1] = "";
@@ -109,7 +111,10 @@ class Board{
             }
             message.textContent = `Congratulations ${winner}!! You Won!`;
         }
-        document.body.appendChild(message);
+        let resetButton = document.querySelector(".reset-button");
+        resetButton.textContent = "Play Again?"
+        let infoBox = document.querySelector("#info");
+        infoBox.prepend(message);
     }
 }
 class TicTacToeGame{
