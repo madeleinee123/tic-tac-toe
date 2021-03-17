@@ -6,8 +6,8 @@ body{
     background: #E3C0D3;
 }
 .board{
-    width: 75vw;
-    height: 75vh;
+    width: 50vw;
+    height: 50vw;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -84,6 +84,6 @@ body{
     align-items: center;
 }
 img{
-    width: 20vw;
-    height: 20vw;
+    width: 10vw;
+    height: 10vw;
 }
