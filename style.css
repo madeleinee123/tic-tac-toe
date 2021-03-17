@@ -4,25 +4,45 @@ body{
     justify-content: center;
     align-items: center;
     background: #E3C0D3;
+    font-size: 2vw;
+    font-family: 'Dosis', sans-serif;
+}
+#title{
+    margin-left:10px;
+}
+button{
+    background-color: #412234;
+    border: none;
+    color: white;
+    padding: 1vh 2vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.75vw;
+    font-family: 'Dosis', sans-serif;
+    border-radius: 4px;
+}
+button:hover{
+    background-color: #723a5b
 }
 .board{
-    width: 50vw;
+    width: 75vw;
     height: 50vw;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 #topLeft{
     grid-row: 1;
-    grid-column: 1;
+    grid-column: 2;
     border-bottom: 5px solid;
     border-color: #412234;
 }
 
 #topCenter{
     grid-row: 1;
-    grid-column: 2;
+    grid-column: 3;
     border-left: 5px solid;
     border-bottom: 5px solid;
     border-color: #412234;
@@ -30,7 +50,7 @@ body{
 
 #topRight{
     grid-row: 1;
-    grid-column: 3;
+    grid-column: 4;
     border-left: 5px solid;
     border-bottom: 5px solid;
     border-color: #412234;
@@ -38,14 +58,14 @@ body{
 
 #middleLeft{
     grid-row: 2;
-    grid-column: 1;
+    grid-column: 2;
     border-bottom: 5px solid;
     border-color: #412234;
 }
 
 #middleCenter{
     grid-row: 2;
-    grid-column: 2;
+    grid-column: 3;
     border-left: 5px solid;
     border-bottom: 5px solid;
     border-color: #412234;
@@ -53,7 +73,7 @@ body{
 
 #middleRight{
     grid-row: 2;
-    grid-column: 3;
+    grid-column: 4;
     border-left: 5px solid;
     border-bottom: 5px solid;
     border-color: #412234;
@@ -61,21 +81,27 @@ body{
 
 #bottomLeft{
     grid-row: 3;
-    grid-column: 1;
+    grid-column: 2;
 }
 
 #bottomCenter{
     grid-row: 3;
-    grid-column: 2;
+    grid-column: 3;
     border-left: 5px solid;
     border-color: #412234;
 }
 
 #bottomRight{
     grid-row: 3;
-    grid-column: 3;
+    grid-column: 4;
     border-left: 5px solid;
     border-color: #412234;
+}
+#button-box{
+    gird-row: 1 /span 3;
+    grid-column: 5;
+    margin-top: 20px;
+    margin-left:10px;
 }
 .square{
     display: flex;
