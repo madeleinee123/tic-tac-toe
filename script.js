@@ -1,4 +1,5 @@
-class Board{
+
+class TicTacToeGame{
     constructor(){
         this.htmlBoard= document.querySelector(".board");
         this.board= {
@@ -12,11 +13,15 @@ class Board{
             bottomCenter: [false, "", this.htmlBoard.querySelector("#bottomCenter")],
             bottomRight: [false, "", this.htmlBoard.querySelector("#bottomRight")]
         }
+        this.first = "x"
         this.turn = "x";
         this.openBoxes = 9;
         this.gameOver = false;
+        this.player1Wins = 0;
+        this.player2Wins = 0;
     }
     setSquare(position){
+
         if (!this.board[position][0] && !this.gameOver) {
             this.board[position][0] = true;
             this.board[position][1] = this.turn;
@@ -39,6 +44,11 @@ class Board{
             this.setSquare(div.id);
             event.preventDefault();
         }))
+        let resetButton = document.querySelector(".reset-button");
+        resetButton.addEventListener("click", (event)=> {
+            this.clearBoard();
+            event.preventDefault();
+        })
     }
     clearBoard(){
         this.htmlBoard.querySelector(".reset-button").textContent = "Reset";
@@ -49,13 +59,18 @@ class Board{
             if (image !== null){
                 image.remove();
             }
-            let message = document.querySelector("#message");
-            if (message !== null){
-                message.remove();
-            }
             this.board[key][2].style.backgroundColor = "#E3C0D3";
         }
-        this.turn = "x";
+        let message = document.querySelector("#message");
+        if(this.first === "x"){
+            this.turn = "o";
+            message.textContent = "O's Go First!!";
+            this.first = "o";
+        }else{
+            this.turn = "x";
+            message.textContent = "X's Go First!!";
+            this.first = "x";
+        }
         this.openBoxes = 9;
         this.gameOver = false;
     }
@@ -95,8 +110,7 @@ class Board{
     }
     reportWinner(squares){
         this.gameOver = true;
-        let message = document.createElement("h2");
-        message.setAttribute("id", "message");
+        let message = document.querySelector("#message");
         if (squares === "tie"){
             message.textContent = "It's a tie! Play again??";
         }else{
@@ -105,9 +119,15 @@ class Board{
                 this.board[squares[i]][2].style.backgroundColor = "#FFC759";
             }
             if (this.turn === "x"){
-                winner = "Player 1"
+                winner = "X's";
+                this.player1Wins = this.player1Wins + 1;
+                let winnerScore = document.querySelector("#x-score > h1");
+                winnerScore.textContent = this.player1Wins;
             }else{
-                winner = "Player 2"
+                winner = "O's";
+                this.player2Wins = this.player2Wins + 1;
+                let winnerScore = document.querySelector("#o-score > h1");
+                winnerScore.textContent = this.player2Wins;
             }
             message.textContent = `Congratulations ${winner}!! You Won!`;
         }
@@ -116,19 +136,10 @@ class Board{
         let infoBox = document.querySelector("#info");
         infoBox.prepend(message);
     }
-}
-class TicTacToeGame{
-    constructor() {
-        this.board = new Board();
-    }
     playGame(){
-        let resetButton = document.querySelector(".reset-button");
-        resetButton.addEventListener("click", (event)=> {
-            this.board.clearBoard();
-            event.preventDefault();
-        })
-        this.board.addListeners();
+        this.addListeners();
     }
 }
+
 let game = new TicTacToeGame();
 game.playGame();

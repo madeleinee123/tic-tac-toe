@@ -13,6 +13,16 @@
 <body>
     <h1 id="title">Tic-Tac-Toe</h1>
         <div class="board">
+            <div class="square" id="score-card" >
+                <div id="x-score">
+                    <h2 class="score-title"><u>X's Wins</u></h2>
+                    <h1 class="score-title">0</h1>
+                </div>
+                <div id="o-score">
+                    <h2 class="score-title"><u>O's Wins</u></h2>
+                    <h1 class="score-title">0</h1>
+                </div>
+            </div>
             <div class="square" id="topLeft">
             </div>
             <div class="square" id="topCenter">
@@ -31,9 +41,13 @@
             </div>
             <div class="square" id="bottomRight">
             </div>
-            <div id="info"></div>
-            <div id="button-box">
-                <button class="reset-button">Reset</button
+            <div class="square" id ="right-side-info">
+                <div id="info">
+                    <h2 id="message">X's Go First!!</h2>
+                </div>
+                <div id="button-box">
+                    <button class="reset-button">Reset</button
+                </div>
             </div>
         </div>
     <script src="script.js"></script>
