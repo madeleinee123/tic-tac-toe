@@ -29,11 +29,14 @@ class TicTacToeGame{
             image.setAttribute("src", `images/${this.turn}.png`);
             this.board[position][2].appendChild(image);
             this.openBoxes = this.openBoxes - 1;
+            let message = document.querySelector("#message");
             if (!this.checkForWinner()) {
                 if (this.turn === "x") {
                     this.turn = "o";
+                    message.textContent = "O's Turn!";
                 } else if (this.turn === "o") {
                     this.turn = "x";
+                    message.textContent = "X's Turn!"
                 }
             }
         }
