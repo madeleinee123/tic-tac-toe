@@ -1,5 +1,10 @@
-
+/*
+* The class TicTacToeGame allows two users to play tic-tac-toe against each other.  It keeps track of the score over
+* multiple games and interacts with the user.
+* Parameters: none
+*/
 class TicTacToeGame{
+
     constructor(){
         this.htmlBoard= document.querySelector(".board");
         this.board= {
@@ -20,6 +25,14 @@ class TicTacToeGame{
         this.player1Wins = 0;
         this.player2Wins = 0;
     }
+
+    /*
+    * This method updates the board to to reflect the players chosen square and places either an
+    * x  or an o in the space if it is available.
+    * Parameters:
+    * position - a string that is the name of the square that was clicked on.
+    * Return Value: none
+    */
     setSquare(position){
 
         if (!this.board[position][0] && !this.gameOver) {
@@ -41,10 +54,16 @@ class TicTacToeGame{
             }
         }
     }
+
+    /*
+    * This method adds all the event listeners to the clickable spaces on the web application.
+    * Parameters: none
+    * Return Value: none
+    */
     addListeners(){
         let squares = this.htmlBoard.querySelectorAll(".square")
-        squares.forEach(div => div.addEventListener("click", (event) => {
-            this.setSquare(div.id);
+        squares.forEach(square => square.addEventListener("click", (event) => {
+            this.setSquare(square.id);
             event.preventDefault();
         }))
         let resetButton = document.querySelector(".reset-button");
@@ -53,6 +72,14 @@ class TicTacToeGame{
             event.preventDefault();
         })
     }
+
+    /*
+    * This method is called whenever the user clicks the reset or play again? button.  It sets all this.board,
+    * this.openBoxes, and this.gameOver back to their original states.  It also switches the player that goes first
+    * to the opposite of the previous game and updates the score boxes to reflect who won in the previous round.
+    * Parameters: none
+    * Return Value: none
+    */
     clearBoard(){
         this.htmlBoard.querySelector(".reset-button").textContent = "Reset";
         for (let key in this.board){
@@ -77,6 +104,15 @@ class TicTacToeGame{
         this.openBoxes = 9;
         this.gameOver = false;
     }
+
+    /*
+    * This method is called after every turn.  It iterates through the board and checks to see if there are
+    * any winning combinations.
+    * Parameters: none
+    * Return Value:
+    * false - if no winning sequence is found and there are still empty squares otherwise it calls reportWinner and
+    *         returns nothing.
+    */
     checkForWinner(){
         let player = this.turn;
         let topLeft = this.board.topLeft[1];
@@ -106,15 +142,24 @@ class TicTacToeGame{
         }else if ((bottomLeft === middleCenter) && (middleCenter === topRight) && (bottomLeft === player)){
             this.reportWinner(["bottomLeft", "middleCenter", "topRight"]);
         }else if (this.openBoxes < 1){
-            this.reportWinner("tie");
+            this.reportWinner();
         }else{
             return false;
         }
     }
-    reportWinner(squares){
+
+    /*
+    * This method alerts the user of if the game was a tie, if X's won or if O's won. It also marks the
+    * game as over so the user can no longer interact with the squares of the TicTacToe Board.
+    * Parameters:
+    * squares (optional) - list of names of the squares that are in the winning combination on the board
+    *                      if no parameter is passed in than the game is a tie
+    * Return Value: none
+    */
+    reportWinner(squares = null){
         this.gameOver = true;
         let message = document.querySelector("#message");
-        if (squares === "tie"){
+        if (squares === null){
             message.textContent = "It's a tie! Play again??";
         }else{
             let winner;
@@ -139,10 +184,16 @@ class TicTacToeGame{
         let infoBox = document.querySelector("#info");
         infoBox.prepend(message);
     }
+
+    /*
+    * This method calls the addListeners() method allowing the buttons to be activated
+    * Parameters: none
+    * Return Value: none
+    */
     playGame(){
         this.addListeners();
     }
 }
 
-let game = new TicTacToeGame();
-game.playGame();
+let game = new TicTacToeGame(); // create an instance of the game
+game.playGame(); // activates the interface
