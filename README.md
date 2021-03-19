@@ -51,7 +51,7 @@ browser using GitHub pages using this link: https://madeleinee123.github.io/tic-
 - The scores over multiple rounds are displayed on the screen
 #### MVP Gold
 ##### New Features: 
-- It is Bill Murry themed now
+- It is Bill Murray themed now
 ![preview](images/mvp_gold_character_selection.png)
 ![preview](images/mvp_gold_winner.png)
 
