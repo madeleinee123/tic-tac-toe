@@ -15,41 +15,71 @@
         <div class="board">
             <div class="square" id="score-card" >
                 <div id="x-score">
-                    <h2 class="score-title"><u>X's Wins</u></h2>
+                    <h2 class="score-title"><u>Player 1's Wins</u></h2>
                     <h1 class="score-title">0</h1>
                 </div>
                 <div id="o-score">
-                    <h2 class="score-title"><u>O's Wins</u></h2>
+                    <h2 class="score-title"><u>Player 2's Wins</u></h2>
                     <h1 class="score-title">0</h1>
                 </div>
             </div>
-            <div class="square" id="topLeft">
+            <div class="square" type="tic-tac-toe-square" id="topLeft">
             </div>
-            <div class="square" id="topCenter">
+            <div class="square" type="tic-tac-toe-square" id="topCenter">
             </div>
-            <div class="square" id="topRight">
+            <div class="square" type="tic-tac-toe-square" id="topRight">
             </div>
-            <div class="square" id="middleLeft">
+            <div class="square" type="tic-tac-toe-square" id="middleLeft">
             </div>
-            <div class="square" id="middleCenter">
+            <div class="square" type="tic-tac-toe-square" id="middleCenter">
             </div>
-            <div class="square" id="middleRight">
+            <div class="square" type="tic-tac-toe-square" id="middleRight">
             </div>
-            <div class="square" id="bottomLeft">
+            <div class="square" type="tic-tac-toe-square" id="bottomLeft">
             </div>
-            <div class="square" id="bottomCenter">
+            <div class="square" type="tic-tac-toe-square" id="bottomCenter">
             </div>
-            <div class="square" id="bottomRight">
+            <div class="square" type="tic-tac-toe-square" id="bottomRight">
             </div>
             <div class="square" id ="right-side-info">
                 <div id="info">
-                    <h2 id="message">X's Go First!!</h2>
+                    <h2 id="message">Choose your character to start the Game!</h2>
                 </div>
                 <div id="button-box">
-                    <button class="reset-button">Reset</button
+                    <button class="reset-button">Reset</button>
+                    <button class="character-button">Choose Your Character</button>
                 </div>
             </div>
         </div>
+    <div id="character-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="icon-choices">
+                <p id="modal-title">Player 1: Choose Your Icon...</p>
+                <div class="icon-grid">
+                    <div class="square" id="cat">
+                        <img src="images/cat.png">
+                    </div>
+                    <div class="square" id="dog">
+                        <img src="images/dog.png">
+                    </div>
+                    <div class="square" id="rat">
+                        <img src="images/rat.png">
+                    </div>
+                    <div class="square" id="pig">
+                        <img src="images/pig.png">
+                    </div>
+                    <div class="square" id="cow">
+                        <img src="images/cow.png">
+                    </div>
+                    <div class="square" id="fish">
+                        <img src="images/fish.png">
+                    </div>
+                </div>
+            </div>
+            <button class="confirm-character">Confirm Selection</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
