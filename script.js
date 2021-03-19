@@ -242,18 +242,19 @@ class TicTacToeGame{
             event.preventDefault();
         });
         choices.forEach((choice) => choice.addEventListener("click", (event) => {
-
-            if (currentChoice !== null){
-                currentChoice.style.background = "none";
+            if (choice.id !== player1.icon) {
+                if (currentChoice !== null) {
+                    currentChoice.style.background = "none";
+                }
+                currentChoice = choice;
+                choice.style.background = "#E3C0D3";
+                if (player1Choice) {
+                    player1.icon = choice.id;
+                } else {
+                    player2.icon = choice.id;
+                }
+                event.preventDefault();
             }
-            currentChoice = choice;
-            choice.style.background = "#E3C0D3";
-            if (player1Choice){
-                player1.icon  = choice.id;
-            }else{
-                player2.icon = choice.id;
-            }
-            event.preventDefault();
         }))
         selectButton.addEventListener("click", (event) => {
             if (player2Choice){
@@ -271,6 +272,7 @@ class TicTacToeGame{
                 this.player1 = player1;
                 header.textContent = "Player 2: Choose Your Icon..."
                 currentChoice.style.background = "#5a4a53"
+                currentChoice = null;
                 player1Choice = false;
                 player2Choice = true;
             }
